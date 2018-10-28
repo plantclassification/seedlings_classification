@@ -8,5 +8,7 @@ We choose the AWS as our web service by the following steps:
 - Analysize the DNS of our web and and associated the elastic IP with it
 - Then we connect to the Ubuntu AMI in our terminal by ssh -i "key.pem" ubuntu@ec2-elastic-ip.compute-1.amazonaws.com
 - Install apache + mysql + php on the linux system
-- Replace the html file of our own one
+- Replace the html file of our own one by scp -i key.pem -r index_new.html ubuntu@ip:~
 
+You can see here for how we connect to the visual machine on AWS and manage our database by mysql:
+https://github.com/plantclassification/seedlings_classification/issues/1#issue-374812700
