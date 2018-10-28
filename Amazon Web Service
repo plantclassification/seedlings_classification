@@ -11,4 +11,4 @@ We choose the AWS as our web service by the following steps:
 - Replace the html file of our own one by scp -i key.pem -r index_new.html ubuntu@ip:~
 
 You can see here for how we connect to the visual machine on AWS and manage our database by mysql:
-https://github.com/ZhibinHuang/Mini_Project2/issues/1#issue-374173005
+https://github.com/plantclassification/seedlings_classification/issues/1
