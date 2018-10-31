@@ -1,1 +1,8 @@
 
+If you want to test the webstie code, please download the compressed file first, because I put all of my files there...
+
+We only achieved upload a image from front end to back end and save the image in upload file.
+We used node.js to achieve back end and javascript(html and css) to achieve front end.
+
+In order to try the effect of the website, you should have a environment to keep server.js working(webstorm for example) and visit 
+127.0.0.1:3000 port to see our main page and try our upload image function(if success, the image will be stored in directory 'upload')
