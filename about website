@@ -1,8 +1,14 @@
 
-If you want to test the webstie code, please download the compressed file first, because I put all of my files there...
+If you want to test the webstie code, please download the compressed file first.
 
-We only achieved upload a image from front end to back end and save the image in upload file.
-We used node.js to achieve back end and javascript(html and css) to achieve front end.
+We only achieved upload a image from front end to back end and save the image in upload file.You can submit a jpg/jpeg/png which is less than
+2mb. You could try this function by put all files in a environment that php file could execute, and use index.html to submit the image, if it
+is successful, you could find the image in the file'2333'. 
 
-In order to try the effect of the website, you should have a environment to keep server.js working(webstorm for example) and visit 
-127.0.0.1:3000 port to see our main page and try our upload image function(if success, the image will be stored in directory 'upload')
+We want to use php to achieve back end and javascript(html, css and web module) to achieve front end.
+
+Our plan is to realize the function that could let user upload a image and get the information about this class of plant.
+
+Next goal: Realize the interaction between training model(python) and return a message to front end.
+
+
