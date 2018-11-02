@@ -10,8 +10,11 @@ the website is http://www.plantseeding.com/
 ![draw](https://github.com/plantclassification/seedlings_classification/blob/master/arch.jpeg)
 
 
+
 ## AWS working page
 ![draw](https://user-images.githubusercontent.com/43126280/47887479-f6237b00-de15-11e8-80e3-10715c6c9c68.jpeg)
+
+
 
 ## Connect to visual machine and show the imags uploaded before
 ![draw](https://user-images.githubusercontent.com/43126280/47887480-f6237b00-de15-11e8-9351-adba53d431ca.jpeg)
