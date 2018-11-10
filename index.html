@@ -93,13 +93,19 @@
         <div class="about-text">
           <h2>Welcome to <span>our website</span></h2>
           <hr>
-				  
-	 	  <script   language="javascript" type="text/javascript">   
+<!--	<form> 
+姓名: <input type="text" onkeyup="showHint1(this.value)" name="fuckuu">
+</form>
+<p>返回值: <span id="txtHint"></span></p>
+<button onclick="showHint(fuckuu.value)"></button>
+-->
+
+<script   language="javascript" type="text/javascript">   
   function   FormSubmit()   
   {     
           myFrm.submit();   
   }   
-  </script> 
+</script> 
 
 <form action="upload.php" method="post" enctype="multipart/form-data" name="myFrm">
     <label for="file">file name：</label>
@@ -420,28 +426,52 @@
     </div>
     <div class="col-md-8 col-md-offset-2">
       <h3>Leave us a message</h3>
-      <form name="sentMessage" id="contactForm" novalidate>
+      <form name="sentMessage" id="contactForm" novalidate action='leave_message.php' method="post">
         <div class="row">
           <div class="col-md-6">
             <div class="form-group">
-              <input type="text" id="name" class="form-control" placeholder="Name" required="required">
+              <input type="text" id="name" class="form-control" placeholder="Name" required="required" name='user_name'>
               <p class="help-block text-danger"></p>
             </div>
           </div>
           <div class="col-md-6">
             <div class="form-group">
-              <input type="email" id="email" class="form-control" placeholder="Email" required="required">
+              <input type="email" id="email" class="form-control" placeholder="Email" required="required" name='user_email'>
               <p class="help-block text-danger"></p>
             </div>
           </div>
         </div>
         <div class="form-group">
-          <textarea name="message" id="message" class="form-control" rows="4" placeholder="Message" required></textarea>
+          
+
+          <textarea  id="message" class="form-control" rows="4" placeholder="Message" required="required" name='user_text'></textarea>
+
           <p class="help-block text-danger"></p>
         </div>
         <div id="success"></div>
-        <button type="submit" class="btn btn-custom btn-lg">Send Message</button>
+       <!--
+        <button type="submit" class="btn btn-custom btn-lg1">Send Message</button>
+        -->
+        
+        
       </form>
+      <button class='newbutton1'  onclick="FormSubmit2();">submit your image</button>
+<script   language="javascript" type="text/javascript">   
+  function   FormSubmit2()   
+  {       
+  	var array1 = document.getElementsByName("user_name")[0];
+  	var array2 = document.getElementsByName("user_email")[0];
+  	var array3 = document.getElementsByName("user_text")[0];
+  	if (array2.value=='') {
+	alert('please input your email address');}
+  	else if(array1.value==''){alert('please input your name');}
+  	else if(array3.value==''){alert('please input your message');}
+  	else{sentMessage.submit();}
+
+         
+         
+  }   
+</script> 
     </div>
   </div>
 </div>
@@ -493,6 +523,41 @@
         font-weight: 900;  
         font-size:125%  
       }  
-   </style>
+      
+
+
+  </style>
+
+<script src="leave_message.js"></script> 
+<script>
+function showHint(str)
+{
+    if (str.length==0)
+    { 
+        document.getElementById("txtHint").innerHTML="";
+        return;
+    }
+    if (window.XMLHttpRequest)
+    {
+        // use ajax to send message
+        xmlhttp=new XMLHttpRequest();
+    }
+    else
+    {    
+        
+        xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    xmlhttp.onreadystatechange=function()
+    {
+        if (xmlhttp.readyState==4 && xmlhttp.status==200)
+        {
+            document.getElementById("txtHint").innerHTML=xmlhttp.responseText;
+        }
+    }
+    xmlhttp.open("GET","gethint.php?q="+str,true);
+    xmlhttp.send();
+    
+}
+</script>
 </body>
 </html>
