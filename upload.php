@@ -36,13 +36,16 @@ if ((($_FILES["imgfile"]["type"] == "image/gif")
             move_uploaded_file($_FILES["imgfile"]["tmp_name"], "upload/" . $_FILES["imgfile"]["name"]);
             echo "image loaction in server: " . "upload/" . $_FILES["imgfile"]["name"]. "<br>";
             echo"<a href='/index.html ' style='color: crimson'>lets try again</a>"."<br>";
-            $output = shell_exec('C:\Users\lenovo\AppData\Local\Programs\Python\Python36\python.exe test.py '. $_FILES["imgfile"]["name"]);
+            $output = shell_exec('C:\Users\lenovo\AppData\Local\Programs\Python\Python36\python.exe predict.py -f upload/'.$_FILES["imgfile"]["name"]);
+            //$output = shell_exec('sudo python predict.py -f upload/'.$_FILES["imgfile"]["name"]);
+            //$output = shell_exec('python3 predict.py '."-f upload/".$_FILES["imgfile"]["name"]);
             echo"We believe this plant belongs to ".$output;
 
             //function abc(){
              //   echo ("<script>window.open('/index.html');</script>");
            // }
             //echo abc();
+
     }
 
 }
