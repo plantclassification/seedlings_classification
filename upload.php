@@ -28,6 +28,7 @@ if ((($_FILES["imgfile"]["type"] == "image/gif")
         if (file_exists("upload/" . $_FILES["imgfile"]["name"]))
         {
             echo $_FILES["imgfile"]["name"] . " You already uploaded the image "."<br>";
+
             echo"<br>"."<a href='/index.html ' style='color: crimson'>lets try again</a>";
         }
         else
@@ -36,15 +37,105 @@ if ((($_FILES["imgfile"]["type"] == "image/gif")
             move_uploaded_file($_FILES["imgfile"]["tmp_name"], "upload/" . $_FILES["imgfile"]["name"]);
             echo "image loaction in server: " . "upload/" . $_FILES["imgfile"]["name"]. "<br>";
             echo"<a href='/index.html ' style='color: crimson'>lets try again</a>"."<br>";
+
             $output = shell_exec('C:\Users\lenovo\AppData\Local\Programs\Python\Python36\python.exe predict.py -f upload/'.$_FILES["imgfile"]["name"]);
             //$output = shell_exec('sudo python predict.py -f upload/'.$_FILES["imgfile"]["name"]);
             //$output = shell_exec('python3 predict.py '."-f upload/".$_FILES["imgfile"]["name"]);
-            echo"We believe this plant belongs to ".$output;
+            $t=$output;
+            rename("upload/" . $_FILES["imgfile"]["name"],"upload/" ."pictures.jpg");
+            //if($output=='Common wheat')
+            //{
+            //    echo "FQ"."<br>";
+            //}
+            //else{
+            //    echo "Common wheat ";
+            //    echo $output;
+            //}
 
-            //function abc(){
-             //   echo ("<script>window.open('/index.html');</script>");
-           // }
-            //echo abc();
+           // echo"We believe this plant belongs to ".$output;
+            //sleep(5);
+            //echo"<script>window.open('/'.$output);</script>";
+            //echo(gettype($output));
+            //echo(strlen($output));
+            //function abc($output){
+            //   echo ("<script>window.open('/'.$output);</script>");
+            //}
+            //echo abc($output);
+            //echo(strlen('Common wheat '));
+            echo $t;
+            if($t==0)
+            {
+                echo"We believe this plant belongs to Black-grass ";
+                //sleep(2);
+                echo ("<script>self.location=('/Black-grass');</script>");
+            }
+            if($t==1)
+            {
+                echo"We believe this plant belongs to Charlock ";
+                //sleep(2);
+                echo ("<script>self.location=('/Charlock');</script>");
+            }
+            if($t==2)
+            {
+                echo"We believe this plant belongs to Cleavers ";
+                //sleep(2);
+                echo ("<script>self.location=('/Cleavers');</script>");
+            }
+            if($t==3)
+            {
+                echo"We believe this plant belongs to Common Chickweed";
+                //sleep(2);
+                echo ("<script>self.location=('/Common Chickweed');</script>");
+            }
+            if($t==4)
+            {
+                echo"We believe this plant belongs to Common wheat ";
+                //sleep(2);
+                echo ("<script>self.location=('/Common wheat');</script>");
+            }
+            if($t==5)
+            {
+                echo"We believe this plant belongs to Fat Hen ";
+                //sleep(2);
+                echo ("<script>self.location=('/Fat Hen');</script>");
+            }
+
+            if($t==6)
+            {
+                echo"We believe this plant belongs to Loose Silky-bent ";
+                //sleep(2);
+                echo ("<script>self.location=('/Loose Silky-bent');</script>");
+            }
+            if($t==7)
+            {
+                echo"We believe this plant belongs to Maize ";
+                //sleep(2);
+                echo ("<script>self.location=('/Maize');</script>");
+            }
+            if($t==8)
+            {
+                echo"We believe this plant belongs to Scentless Mayweed ";
+                //sleep(2);
+                echo ("<script>self.location=('/Scentless Mayweed');</script>");
+            }
+            if($t==9)
+            {
+                echo"We believe this plant belongs to Shepherds Purse ";
+                //sleep(2);
+                echo ("<script>self.location=('/Shepherds Purse');</script>");
+            }
+            if($t==10)
+            {
+                echo"We believe this plant belongs to Small-flowered Cranesbill";
+                //sleep(2);
+                echo ("<script>self.location=('/Small-flowered Cranesbill');</script>");
+            }
+            if($t==11)
+            {
+                echo"We believe this plant belongs to Sugar beet";
+                //sleep(2);
+                echo ("<script>self.location=('/Sugar beet');</script>");
+            }
 
     }
 
