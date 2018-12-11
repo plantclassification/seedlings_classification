@@ -1,5 +1,9 @@
 <?php
 $title = $_COOKIE['mycookie'];
+$kl = $_COOKIE['kl'];
+$float=floatval($kl);
+$float=$float*100;
+$float=intval($float);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,9 +34,10 @@ $title = $_COOKIE['mycookie'];
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12 col-sm-12">
-				<img src="<?php echo $title; ?>" class="img-responsive 1img-circle tm-border" alt="templatemo easy profile">
+				<img src="<?php echo $title; ?>" height="500" width="500" class="img-responsive 1img-circle tm-border" alt="templatemo easy profile">
 				<hr>
 				<h1 class="tm-title bold shadow">We believe it belongs to Loose Silky-bent</h1>
+                <h2 class="tm-title bold shadow"> The confidence is <?php echo $float; ?>% among all 12 classes</h2>
 				
 			</div>
 		</div>
@@ -126,7 +131,7 @@ It has naturalized in the United States, Canada, and Russian Far East.
 			<div class="col-md-12 col-sm-12">
 				
 				<ul class="social-icons">
-
+                  Descriptions and images come from  https://en.wikipedia.org/wiki/Apera_spica-venti <br>http://adlib.everysite.co.uk/adlib/defra/content.aspx?id=000HK277ZX.0AGZCS09TISKYO
 				</ul>
 			</div>
 		</div>
