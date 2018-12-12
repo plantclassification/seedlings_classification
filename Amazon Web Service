@@ -12,3 +12,16 @@ We choose the AWS as our web service by the following steps:
 
 You can see here for how we connect to the visual machine on AWS and manage our database by mysql:
 https://user-images.githubusercontent.com/43126280/47623515-e8ee4f80-dae8-11e8-931f-65f94731676b.png
+
+
+1. Why AWS?
+Because AWS is a secure cloud services platform, offering compute power, database storage, content delivery and other functionality to help businesses scale and grow. More importantly, the first year usage of AWS is free for lots of resources and it also provide a 100 dollars credit for students.
+
+2. Why Amazon Elastic Compute Cloud(EC2) instance?
+    Because EC2 provides scalable computing capacity in the Amazon Web Services (AWS) cloud. Using Amazon EC2 eliminates our need to invest in hardware up front, so we can develop and deploy applications faster. We can decide the virtual servers we needed, configure security and networking, and manage storage.
+
+3. How to build a server on AWS for EC2 instance?
+Step 1: On the EC2 dashboard page, click on the “Launch Instance” button, then follow the instructions and choose the source details(here we choose the Ubuntu Server 18.04 LTS (HVM), SSD Volume Type), create and download a new key for this instance and then launch the instance. 
+Step 2: Go to the “Elastic IPs” column, create an new IP address and then associate with the EC2 instance you created in step 1.
+Step 3: Go to the website where you bought your domain name, click on the “DNS Management” then bound your host with IP address which is created in step 2.
+Step 4: Open a terminal, execute “chmod 400 key.pem”, and then connect to your instance using its public DNS, like “ssh -i “key.pem” ubuntu@ec2-IP.compute-1.amazonaws.com”.
