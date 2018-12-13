@@ -1,0 +1,181 @@
+<?php
+$title = $_COOKIE['mycookie'];
+$kl = $_COOKIE['kl'];
+$float=floatval($kl);
+$float=$float*100;
+$float=intval($float);
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>result and information</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<!-- stylesheet css -->
+	<link rel="stylesheet" href="css2/bootstrap.min.css">
+	<link rel="stylesheet" href="css2/font-awesome.min.css">
+	<link rel="stylesheet" href="css2/templatemo-green.css">
+	
+</head>
+<body data-spy="scroll" data-target=".navbar-collapse">
+
+<!-- preloader section -->
+<div class="preloader">
+	<div class="sk-spinner sk-spinner-wordpress">
+       <span class="sk-inner-circle"></span>
+     </div>
+</div>
+
+<!-- header section -->
+<header>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 col-sm-12">
+				<img src="<?php echo $title; ?>" height="500" width="500" class="img-responsive 1img-circle tm-border" alt="templatemo easy profile">
+				<hr>
+				<h1 class="tm-title bold shadow">We believe it belongs to Maize</h1>
+                <h2 class="tm-title bold shadow"> The confidence is <?php echo $float; ?>% among all 12 classes</h2>
+				
+			</div>
+		</div>
+	</div>
+</header>
+
+<!-- about and skills section -->
+<section class="container">
+	<div class="row">
+		<div class="col-md-6 col-sm-12">
+			<div class="about">
+				<h3 class="accent">Maize</h3>
+				<h2>description</h2>
+				<p>
+					also known as corn, is a cereal grain first domesticated by indigenous peoples in southern Mexico about 10,000 years ago. The leafy stalk of the plant produces pollen inflorescences and separate ovuliferous inflorescences called ears that yield kernels or seeds, which are fruits.Maize has become a staple food in many parts of the world, with the total production of maize surpassing that of wheat or rice. However, little of this maize is consumed directly by humans: most is used for corn ethanol, animal feed and other maize products.
+				</p>
+                <br><br><br>
+			</div>
+		</div>
+		<div class="col-md-6 col-sm-12">
+			<div class="skills">
+				<h2 class="white">History</h2>
+				Most historians believe maize was domesticated in the Tehuacán Valley of Mexico. Recent research in the early 21st century has modified this view somewhat; scholars now indicate the adjacent Balsas River Valley of south-central Mexico as the center of domestication.
+An influential 2002 study by Matsuoka et al. has demonstrated that, rather than the multiple independent domestications model, all maize arose from a single domestication in southern Mexico about 9,000 years ago. The study also demonstrated that the oldest surviving maize types are those of the Mexican highlands. Later, maize spread from this region over the Americas along two major paths. This is consistent with a model based on the archaeological record suggesting that maize diversified in the highlands of Mexico before spreading to the lowlands.
+			</div>
+		</div>
+	</div>
+	
+</section>
+
+<!-- education and languages -->
+<section class="container">
+	<div class="row">
+		<div class="col-md-8 col-sm-12">
+			<div class="education">
+				<h2 class="white">Plant breeding</h2>
+					<div class="education-content">
+							<div class="education-school">
+
+							</div>
+						<p class="education-description">
+							Maize reproduces sexually each year. This randomly selects half the genes from a given plant to propagate to the next generation, meaning that desirable traits found in the crop (like high yield or good nutrition) can be lost in subsequent generations unless certain techniques are used.
+						</p>
+					</div>
+			</div>
+		</div>
+		<div class="col-md-4 col-sm-12">
+			<div class="languages">
+				<h2>List</h2>
+					<ul>
+						<li> dent corn</li>
+						<li>flint corn</li>
+						<li>pod corn</li>
+						<li>flour corn</li>
+						<li> sweet corn</li>
+				
+					</ul>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- contact and experience -->
+<section class="container">
+	<div class="row">
+		<div class="col-md-4 col-sm-12">
+			<div class="contact">
+				<h2>Contact</h2>
+					<p><i class="fa fa-map-marker"></i> Boston University</p>
+					<p><i class="fa fa-phone"></i> +8613260006638</p>
+					<p><i class="fa fa-envelope"></i> hdsyzxlh@hotmail.com</p>
+
+			</div>
+		</div>
+		<div class="col-md-8 col-sm-12">
+			<div class="experience">
+				<h2 class="white">Information</h2>
+				
+					<div class="experience-content">
+						<h4 class="experience-title accent">Please send us a message if there is something wrong </h4>
+						<h5>Go back to main page</h5><span></span>
+						<h5></h5>
+						<br />
+						<button class='newbutton1'  onclick="FormSubmit();">Home</button>
+					
+					</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- footer section -->
+<footer>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 col-sm-12">
+                Descriptions and images come from wikipedia: https://en.wikipedia.org/wiki/Maize
+				<ul class="social-icons">
+
+				</ul>
+			</div>
+		</div>
+	</div>
+</footer>
+
+<!-- javascript js -->	
+<script src="js2/jquery.js"></script>
+<script src="js2/bootstrap.min.js"></script>	
+<script src="js2/jquery.backstretch.min.js"></script>
+<script src="js2/custom.js"></script>
+</script>
+   <style type="text/css">
+     .newbutton1 {  
+        width: 200px;  
+        padding:8px;  
+        background-color: #6aaf08;  
+        border-color: #357ebd;  
+        color: #fff;  
+        -moz-border-radius: 10px;  
+        -webkit-border-radius: 10px;  
+        border-radius: 10px; /* future proofing */  
+        -khtml-border-radius: 10px; /* for old Konqueror browsers */  
+        text-align: center;  
+        vertical-align: middle;  
+        border: 1px solid transparent;  
+        font-weight: 900;  
+        font-size:125%  
+      }  
+      
+
+
+
+  </style>
+<script   language="javascript" type="text/javascript">   
+  function   FormSubmit()   
+  {     
+          self.location='./index.html'; 
+  }   
+</script> 
+</body>
+</html>

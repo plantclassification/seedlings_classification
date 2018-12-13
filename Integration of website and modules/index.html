@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Home</title>
+<meta name="description" content="">
+<meta name="author" content="">
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+
+<!-- Favicons
+    ================================================== -->
+<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="img/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="img/apple-touch-icon-114x114.png">
+
+<!-- Bootstrap -->
+<link rel="stylesheet" type="text/css"  href="css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="fonts/font-awesome/css/font-awesome.css">
+
+<!-- Slider
+    ================================================== -->
+<link href="css/owl.carousel.css" rel="stylesheet" media="screen">
+<link href="css/owl.theme.css" rel="stylesheet" media="screen">
+
+<!-- Stylesheet
+    ================================================== -->
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<link rel="stylesheet" type="text/css" href="css/nivo-lightbox/nivo-lightbox.css">
+<link rel="stylesheet" type="text/css" href="css/nivo-lightbox/default.css">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+
+
+  <![endif]-->
+</head>
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+
+
+<!-- Navigation
+    ==========================================-->
+<nav id="menu" class="navbar navbar-default navbar-fixed-top">
+  <div class="container"> 
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+      <a class="navbar-brand page-scroll" href="#page-top">plant-seedling-classification</a> </div>
+    
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#about" class="page-scroll">About</a></li>
+        <li><a href="#services" class="page-scroll">Descriptions</a></li>
+        
+        <li><a href="#testimonials" class="page-scroll">Userstory</a></li>
+        <li><a href="#contact" class="page-scroll">Contact</a></li>
+      </ul>
+    </div>
+    <!-- /.navbar-collapse --> 
+  </div>
+  <!-- /.container-fluid --> 
+</nav>
+<!-- Header -->
+<header id="header">
+  <div class="intro">
+    <div class="overlay">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 col-md-offset-2 intro-text">
+            <h1>Plant seedling classification</h1>
+            <p>This website is designed to help users identify plant species<br>
+              </p>
+              <bt></bt>
+
+
+
+          </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+<!-- About Section -->
+<div id="about" style=" overflow:hidden;">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-md-6">
+        <div class="about-text">
+          <h2>Welcome to <span>our website</span></h2>
+
+<!--	<form> 
+姓名: <input type="text" onkeyup="showHint1(this.value)" name="fuckuu">
+</form>
+<p>返回值: <span id="txtHint"></span></p>
+<button onclick="showHint(fuckuu.value)"></button>
+-->
+<style>
+  .clear{clear: both;}
+
+</style>
+<script   language="javascript" type="text/javascript">   
+  function   FormSubmit()   
+  {     
+          myFrm.submit();   
+  }   
+</script> 
+
+<form action="upload.php" method="post" enctype="multipart/form-data" name="myFrm">
+    <label for="file">file name：</label>
+    <input type="file" name="imgfile" id="file"><br>
+    
+</form>
+
+<button class='newbutton1'  onclick="FormSubmit();">submit your image</button>
+          <p>Here you can upload a image and have a try now!</p>
+          <p>Please do not add space in the name of the picture.</p>
+
+          <a href="#services" class="btn btn-custom btn-lg page-scroll">ALL CLASSES</a> </div>
+      </div>
+
+      <div class="col-xs-12 col-md-3">
+        <div class="about-media" > <img  src="img/about-2.jpg" alt=" "> </div>
+        <div class="about-desc">
+
+          <h3>Feature</h3>
+          <!--
+
+          <p>Total of 300 data in validation set. Each row represents ground truth and column represents predictions</p>-->
+          <p>Help you learn about plant species</p>
+        </div>
+      </div>
+
+      <div class="col-xs-12 col-md-3">
+        <div class="about-media"> <img src="img/about-1.jpg" alt=" "></div>
+        <div class="about-desc">
+          <h3>Suitable environment and perniciousness</h3>
+          <p>Let you know some basic information about the plant</p>
+        </div>
+      </div>
+
+
+
+    </div>
+  </div>
+
+</div>
+
+<!-- Services Section -->
+<div id="services">
+  <div class="container">
+    <div class="col-md-10 col-md-offset-1 section-title text-center">
+      <h2>descriptions of each class</h2>
+
+      <p>You can see all the information of each class here,click it!!</p>
+    </div>
+    <div class="row">
+      <div class="col-md-3 text-center">
+        <div class="service-media"> <img onclick="imf1()" src="images2/black grass.jpg" alt=" "> </div>
+        <div class="service-desc">
+          <h3>black grass</h3>
+          
+        </div>
+      </div>
+            <div class="col-md-3 text-center">
+        <div class="service-media"> <img onclick="imf2()" src="images2/cleavers.jpg" alt=" "> </div>
+        <div class="service-desc">
+          <h3>cleavers</h3>
+
+        </div>
+      </div>
+            <div class="col-md-3 text-center">
+        <div class="service-media"> <img onclick="imf3()" src="images2/Common Chickweed.JPG" alt=" "> </div>
+        <div class="service-desc">
+          <h3>Common Chickweed</h3>
+
+        </div>
+      </div>
+            <div class="col-md-3 text-center">
+        <div class="service-media"> <img onclick="imf4()" src="images2/Fat Hen.jpg" alt=" "> </div>
+        <div class="service-desc">
+          <h3>Fat Hen</h3>
+        </div>
+      </div>
+            <div class="col-md-3 text-center">
+        <div class="service-media"> <img onclick="imf5()" src="images2/Loose Silky-bent.jpg" alt=" "> </div>
+        <div class="service-desc">
+          <h3>Loose Silky-bent</h3>
+ 
+        </div>
+      </div>
+            <div class="col-md-3 text-center">
+        <div class="service-media"> <img onclick="imf6()" src="images2/Maize.jpg" alt=" "> </div>
+        <div class="service-desc">
+          <h3>Maize</h3>
+
+        </div>
+      </div>
+            <div class="col-md-3 text-center">
+        <div class="service-media"> <img onclick="imf7()" src="images2/scentless_mayweed.jpg" alt=" "> </div>
+        <div class="service-desc">
+          <h3>scentless_mayweed</h3>
+
+        </div>
+      </div>
+                  <div class="col-md-3 text-center">
+        <div class="service-media"> <img onclick="imf8()" src="images2/Shepherds Purse.JPG" alt=" "> </div>
+        <div class="service-desc">
+          <h3>Shepherds Purse</h3>
+
+        </div>
+      </div>
+                  <div class="col-md-3 text-center">
+        <div class="service-media"> <img onclick="imf9()" src="images2/Small-flowered Cranesbill.jpeg" alt=" "> </div>
+        <div class="service-desc">
+          <h3>Small-flowered Cranesbill</h3>
+
+        </div>
+      </div>
+      
+      <div class="col-md-3 text-center">
+        <div class="service-media"> <img onclick="imf10()" src="images2/Sugar beet.jpg" alt=" "> </div>
+        <div class="service-desc">
+          <h3>Sugar beet</h3>
+
+        </div>
+      </div>
+      <div class="col-md-3 text-center">
+        <div class="service-media"> <img onclick="imf11()" src="images2/Charlock.JPG" alt=" "> </div>
+        <div class="service-desc">
+          <h3>Charlock</h3>
+
+        </div>
+      </div>
+      <div class="col-md-3 text-center">
+        <div class="service-media"> <img onclick="imf12()" src="images2/Common wheat.jpg" alt=" "> </div>
+        <div class="service-desc">
+          <h3>Common wheat</h3>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Testimonials Section -->
+<div id="testimonials" class="text-center">
+  <div class="overlay">
+    <div class="container">
+      <div class="section-title">
+        <h2>User story</h2>
+
+      </div>
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+          <div id="testimonial" class="owl-carousel owl-theme">
+            <div class="item">
+              <p>I am a student, I need to write a paper about the environment nearby. I found that some new kinds of plants(seedlings) are growing in the backyard. I want to know what kind of plants they are.  (we could provide a convenient&accurate result.)</p>
+              <p></p>
+            </div>
+            <div class="item">
+              <p>I am a plant lover, I found a unknown seedling in my flowerpot, I want to know what it is and if it is harmful. (we could provide a basic description about this class of plant.)</p>
+              <p></p>
+
+              <p></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Contact Section -->
+<div id="contact" class="text-center">
+  <div class="container">
+    <div class="section-title text-center">
+      <h2>Contact</h2>
+
+      <p>Leave us a message!</p>
+    </div>
+    <div class="col-md-10 col-md-offset-1 contact-info">
+      <div class="col-md-4">
+        <h3>Module Designer </h3>
+
+        <div class="contact-item">
+          <p>Luyang Huang</p>
+          <p>email:lyhuang@bu.edu</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <h3>Front-end Designer</h3>
+
+        <div class="contact-item">
+          <p>Hao Li</p>
+          <p>email:hdsyzxlh@hotmail.com</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <h3>Operation & maintenance</h3>
+
+        <div class="contact-item">
+          <p>Zhibin Huang</p>
+          <p>email:hzhibin@bu.edu</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8 col-md-offset-2">
+      <h3>Leave us a message</h3>
+      <form name="sentMessage" id="contactForm" novalidate action='leave_message.php' method="post">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <input type="text" id="name" class="form-control" placeholder="Name" required="required" name='user_name'>
+              <p class="help-block text-danger"></p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <input type="email" id="email" class="form-control" placeholder="Email" required="required" name='user_email'>
+              <p class="help-block text-danger"></p>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          
+
+          <textarea  id="message" class="form-control" rows="4" placeholder="Message" required="required" name='user_text'></textarea>
+
+          <p class="help-block text-danger"></p>
+        </div>
+        <div id="success"></div>
+       <!--
+        <button type="submit" class="btn btn-custom btn-lg1">Send Message</button>
+        -->
+        
+        
+      </form>
+      <button class='newbutton1'  onclick="FormSubmit2();">leave us some messages</button>
+
+      <br><br><br><br><br><br><br>
+      <p>github link: <a href="https://github.com/plantclassification/seedlings_classification/tree/master">https://github.com/plantclassification/seedlings_classification/tree/master</a></p>
+      <p>All images come from: https://foter.com  and Kaggle.org </p>
+      <p>All descriptions come from Wikipedia.org</p>
+
+
+
+<script   language="javascript" type="text/javascript">   
+  function   FormSubmit2()   
+  {       
+  	var array1 = document.getElementsByName("user_name")[0];
+  	var array2 = document.getElementsByName("user_email")[0];
+  	var array3 = document.getElementsByName("user_text")[0];
+  	if (array2.value=='') {
+	alert('please input your email address');}
+  	else if(array1.value==''){alert('please input your name');}
+  	else if(array3.value==''){alert('please input your message');}
+  	else{sentMessage.submit();}
+
+         
+         
+  }   
+</script> 
+    </div>
+  </div>
+</div>
+<div>
+
+</div>
+<!-- Footer Section -->
+<div id="footer">
+  <div class="container text-center">
+    <div class="col-md-8 col-md-offset-2">
+      <div class="social">
+        <ul>
+          All descriptions and images come from: https://foter.com
+
+        </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+<script type="text/javascript" src="js/jquery.1.11.1.js"></script> 
+<script type="text/javascript" src="js/bootstrap.js"></script> 
+<script type="text/javascript" src="js/SmoothScroll.js"></script> 
+<script type="text/javascript" src="js/nivo-lightbox.js"></script> 
+<script type="text/javascript" src="js/jquery.isotope.js"></script> 
+<script type="text/javascript" src="js/owl.carousel.js"></script> 
+<script type="text/javascript" src="js/jqBootstrapValidation.js"></script> 
+<script type="text/javascript" src="js/contact_me.js"></script> 
+<script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript" src="h5uploader.js"></script>
+<script type="text/javascript" src="jump.js"></script>
+<script type="text/javascript">
+    
+    
+    
+</script>
+   <style type="text/css">
+     .newbutton1 {  
+        width: 200px;  
+        padding:8px;  
+        background-color: #6aaf08;  
+        border-color: #357ebd;  
+        color: #fff;  
+        -moz-border-radius: 10px;  
+        -webkit-border-radius: 10px;  
+        border-radius: 10px; /* future proofing */  
+        -khtml-border-radius: 10px; /* for old Konqueror browsers */  
+        text-align: center;  
+        vertical-align: middle;  
+        border: 1px solid transparent;  
+        font-weight: 900;  
+        font-size:125%  
+      }  
+      
+
+
+  </style>
+
+<script src="leave_message.js"></script> 
+<script>
+function showHint(str)
+{
+    if (str.length==0)
+    { 
+        document.getElementById("txtHint").innerHTML="";
+        return;
+    }
+    if (window.XMLHttpRequest)
+    {
+        // use ajax to send message
+        xmlhttp=new XMLHttpRequest();
+    }
+    else
+    {    
+        
+        xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    xmlhttp.onreadystatechange=function()
+    {
+        if (xmlhttp.readyState==4 && xmlhttp.status==200)
+        {
+            document.getElementById("txtHint").innerHTML=xmlhttp.responseText;
+        }
+    }
+    xmlhttp.open("GET","gethint.php?q="+str,true);
+    xmlhttp.send();
+    
+}
+</script>
+</body>
+</html>
