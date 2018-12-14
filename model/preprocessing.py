@@ -4,6 +4,8 @@ import cv2
 import os
 import matplotlib.pyplot as plt
 import logging
+import torch
+from torchvision import transforms
 
 # Input ( ,256,256,4) Output( ,12)
 
@@ -110,6 +112,40 @@ class Preprocessing():
         logging.debug(self.data_dict['label'].shape)
         return self.data_dict
 
+    def read_image_simple(self, size=299, transform=None):
+        for class_folder in os.listdir(self.train_folder):
+            class_path = os.path.join(self.train_folder, class_folder)
+            for image_path in glob.glob(os.path.join(class_path,'*.png')):
+                image = cv2.imread(image_path, cv2.IMREAD_COLOR)
+                image = cv2.resize(image, (size,size))
+                # image_stack = self.segment_plant(image)
+                # image_stack = self.sharpen_image(image_stack)
+                # image_stack = cv2.cvtColor(image_stack, cv2.COLOR_RGB2GRAY)
+                # image_stack = np.reshape(image_stack, (224, 224, 1))
+                # input = np.concatenate((np.array(image), np.array(image_stack)), axis=2)
+                input = transform(image)
+                self.data_dict['image'].append(input)
+                self.data_dict['label'].append(class_folder)
+
+        # self.data_dict['image'] = np.array(self.data_dict['image']).swapaxes(1,3)
+        self.data_dict['image'] = torch.stack(self.data_dict['image'], dim=0)
+        self.data_dict['label'] = np.array([CLASS[i] for i in self.data_dict['label']])
+        self.data_dict['label'] = torch.from_numpy(self.data_dict['label'])
+        # logging.debug(self.data_dict['label'].shape)
+        # logging.debug(self.data_dict['image'].shape)
+
+        def one_hot(num_list, class_number):
+            onehot_list = []
+            for i in range(len(num_list)):
+                one_hot_array = np.zeros(class_number)
+                one_hot_array[num_list[i]] += 1
+                onehot_list.append(one_hot_array)
+            return np.array(onehot_list)
+
+        #self.data_dict['label'] = one_hot(self.data_dict['label'], len(CLASS))
+        # logging.debug(self.data_dict['label'].shape)
+        return self.data_dict
+
     def plot_image(self):
         for class_folder in os.listdir(self.train_folder):
             class_path = os.path.join(self.train_folder, class_folder)
@@ -182,8 +218,63 @@ class Preprocessing():
         print('predictset generated:',self.test_dict['image'].shape)
         return self.test_dict
 
+    def test_data_read_simple(self, size=299):
+        for image_path in glob.glob(os.path.join(self.test_folder, '*.png')):
+            image = cv2.imread(image_path, cv2.IMREAD_COLOR)
+            image = cv2.resize(image, (size, size))
+            # image_stack = self.segment_plant(image)
+            # image_stack = self.sharpen_image(image_stack)
+            # image_stack = cv2.cvtColor(image_stack, cv2.COLOR_RGB2GRAY)
+            # image_stack = np.reshape(image_stack, (224, 224, 1))
+            # input = np.concatenate((np.array(image), np.array(image_stack)), axis=2)
+            input = image
+            self.test_dict['image'].append(input)
+            self.test_dict['id'].append(image_path.split('\\')[-1])
+
+
+        self.test_dict['image'] = np.array(self.test_dict['image']).swapaxes(1,3)
+        print('predictset generated:',self.test_dict['image'].shape)
+        return self.test_dict
+
+    def test_data_read_simple2(self, size=299, transform=None):
+        for image_path in glob.glob(os.path.join(self.test_folder, '*.png')):
+            image = cv2.imread(image_path, cv2.IMREAD_COLOR)
+            image = cv2.resize(image, (size, size))
+            # image_stack = self.segment_plant(image)
+            # image_stack = self.sharpen_image(image_stack)
+            # image_stack = cv2.cvtColor(image_stack, cv2.COLOR_RGB2GRAY)
+            # image_stack = np.reshape(image_stack, (224, 224, 1))
+            # input = np.concatenate((np.array(image), np.array(image_stack)), axis=2)
+            input = transform(image)
+            self.test_dict['image'].append(input)
+            self.test_dict['id'].append(image_path.split('\\')[-1])
+        self.test_dict['image'] = torch.stack(self.test_dict['image'], dim=0)
+
+        #self.test_dict['image'] = np.array(self.test_dict['image']).swapaxes(1,3)
+        print('predictset generated:',self.test_dict['image'].size())
+        return self.test_dict
+
+    def read_image_single(self, image_path):
+        image = cv2.imread(image_path, cv2.IMREAD_COLOR)
+
+        image = cv2.resize(image, (224, 224))
+        image_stack = self.segment_plant(image)
+        image_stack = self.sharpen_image(image_stack)
+        image_stack = cv2.cvtColor(image_stack, cv2.COLOR_RGB2GRAY)
+        image_stack = np.reshape(image_stack, (224, 224, 1))
+        input = np.concatenate((np.array(image), np.array(image_stack)), axis=2)
+        test_input = np.array([input]).swapaxes(1,3)
+
+        return test_input
+
+
 if __name__ == '__main__':
     preprocessing = Preprocessing()
     #preprocessing.test_data_read()
     #data = preprocessing.read_image()
-    preprocessing.plot_image()
+    transform2 = transforms.Compose([
+        transforms.ToTensor(),
+        transforms.Normalize(mean=(0.5, 0.5, 0.5), std=(0.5, 0.5, 0.5))
+    ]
+    )
+    preprocessing.test_data_read_simple2(transform=transform2)

@@ -14,7 +14,6 @@ from torchvision import transforms
 
 
 
-
 def train(model, device, train_loader, optimizer, epoch):
     model.train()
     for batch_idx, (x, y) in enumerate(train_loader):
@@ -38,7 +37,7 @@ def train_incption(model, device, train_loader, optimizer, epoch):
         optimizer.zero_grad()
         x = x.float()
         y = y.long()
-        output, _ = model(x)
+        output = model(x)
         loss = F.cross_entropy(output, y)
         loss.backward()
         optimizer.step()
@@ -87,7 +86,7 @@ def predict_inception(model, device, inputs):
     with torch.no_grad():
         for input in inputs:
             #input = input[0]
-            x = input.to(device).view(1, -1, 299, 299)
+            x = input.to(device).view(1, -1, 224, 224)
             x = x.float()
             output = model(x)
             pred = output.max(1, keepdim=True)[1]
@@ -106,7 +105,7 @@ if __name__ == '__main__':
     print(use_cuda)
     device = 'cuda'
     #model = models.vgg16(pretrained=True)
-    model = models.inception_v3(pretrained=True)
+    model = models.densenet169(pretrained=True)
     for param in model.parameters():
         param.requires_grad = False
     #model.features[0] = torch.nn.Conv2d(4, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
@@ -114,16 +113,22 @@ if __name__ == '__main__':
     # model.classifier[3] = torch.nn.Linear(in_features=2048, out_features=512, bias=True)
     # model.classifier[6] = torch.nn.Linear(in_features=512, out_features=12, bias=True)
     # model.classifier[2] = torch.nn.Dropout(0.1)
-    model.fc = torch.nn.Linear(in_features=2048, out_features=12, bias=True)
+    #model.features[0] = torch.nn.Conv2d(4, 64, kernel_size=(7, 7), stride=(2, 2), padding=(3, 3), bias=False)
+    model.classifier = torch.nn.Linear(in_features=1664, out_features=12, bias=True)
+    #model.fc = torch.nn.Linear(in_features=1664, out_features=12, bias=True)
     print(model)
-
     #sample
     # weights = [263, 390, 287, 611, 221, 475, 654, 221, 516, 231, 496, 385]
+    # sum = 0
     # for weight in weights:
-    #     weight = 600 / weight
-    # weights = torch.Tensor(weights, dtype=torch.float)
+    #     weight = 1 / weight
+    #     sum += weight
+    # for weight in weights:
+    #     weight = weight / sum
+    #
+    # weights = torch.tensor(weights, dtype=torch.float64)
     # sampler = WeightedRandomSampler(weights,
-    #                                 num_samples=400,
+    #                                 num_samples=4750,
     #                                 replacement=True)
 
     preprocessing = Preprocessing()
@@ -132,7 +137,7 @@ if __name__ == '__main__':
         transforms.Normalize(mean=(0.5, 0.5, 0.5), std=(0.5, 0.5, 0.5))
     ]
     )
-    data = preprocessing.read_image_simple(transform=transform2)
+    data = preprocessing.read_image_simple(transform=transform2, size=224)
     #data['image'] = torch.from_numpy(data['image'])
     #data['label'] = torch.from_numpy(data['label'])
     train_set = torch.utils.data.TensorDataset(data['image'],data['label'])
@@ -141,36 +146,45 @@ if __name__ == '__main__':
     test_set = torch.utils.data.Subset(train_set, test_sequence[0:400])
     train_set_split = torch.utils.data.Subset(train_set, test_sequence[400:])
     #train_loader = torch.utils.data.DataLoader(dataset=train_set_split, batch_size=16, shuffle=True, num_workers=0)
-    train_loader = torch.utils.data.DataLoader(dataset=train_set, batch_size=16, shuffle=True, num_workers=0)
+    #train_loader = torch.utils.data.DataLoader(dataset=train_set, batch_size=16, num_workers=0, sampler=sampler)
+    train_loader = torch.utils.data.DataLoader(dataset=train_set, batch_size=16, num_workers=0, shuffle=True)
     test_loader = torch.utils.data.DataLoader(dataset=test_set, batch_size=16)
     print('Total length: ', len(train_set))
     print('train_length:',len(train_set_split))
     print('test_length:',len(test_set))
 
     model.to(device)
-    summary(model,(3,299,299))
+    summary(model,(3,224,224))
 
-    # try:
-    #     model.load_state_dict(torch.load('./inception3.pth'))
-    # except FileNotFoundError:
-    #     print('Initialization')
-    # optimizer = optim.Adam(model.parameters(), lr=0.001)
-    # for epoch in range(10):
-    #     train_incption(model, device, train_loader, optimizer, epoch=10)
-    #     test(model, device, test_loader)
-    #     torch.save(model.state_dict(), './inception3.pth')
-    # for param in model.parameters():
-    #     param.requires_grad = True
-    # for epoch in range(10):
-    #     train_incption(model, device, train_loader, optimizer, epoch=10)
-    #     test(model, device, test_loader)
-    #     torch.save(model.state_dict(), './inception3.pth')
-    # optimizer = optim.Adam(model.parameters(), lr=0.0001)
-    # for epoch in range(10):
-    #     train_incption(model, device, train_loader, optimizer, epoch=10)
-    #     test(model, device, test_loader)
-    #     torch.save(model.state_dict(), './inception3.pth')
+    try:
+        model.load_state_dict(torch.load('./dense169_2.pth'))
+    except FileNotFoundError:
+        print('Initialization')
+    optimizer = optim.Adam(model.parameters(), lr=0.001, weight_decay=0.000001)
+    for epoch in range(5):
+        train_incption(model, device, train_loader, optimizer, epoch=10)
+        test(model, device, test_loader)
+        torch.save(model.state_dict(), './dense169_2.pth')
 
+    for param in model.parameters():
+        param.requires_grad = True
+    for epoch in range(5):
+        train_incption(model, device, train_loader, optimizer, epoch=10)
+        test(model, device, test_loader)
+        torch.save(model.state_dict(), './dense169_2.pth')
+    optimizer = optim.Adam(model.parameters(), lr=0.0001, weight_decay=0.00001)
+
+    for epoch in range(10):
+        train_incption(model, device, train_loader, optimizer, epoch=10)
+        test(model, device, test_loader)
+        torch.save(model.state_dict(), './dense169_2.pth')
+
+    optimizer = optim.Adam(model.parameters(), lr=0.000001, weight_decay=0.00001)
+
+    for epoch in range(10):
+        train_incption(model, device, train_loader, optimizer, epoch=10)
+        test(model, device, test_loader)
+        torch.save(model.state_dict(), './dense169_2.pth')
 
     INV_CLASS = {
         0: 'Black-grass',
@@ -189,10 +203,11 @@ if __name__ == '__main__':
 
     preprocessing = Preprocessing()
     #model = CNN_NET(4, 12).to('cuda')
-    predict_data = preprocessing.test_data_read_simple2(transform=transform2)
+    predict_data = preprocessing.test_data_read_simple2(transform=transform2, size=224)
     #predict_input = torch.from_numpy(predict_data['image'])
-    model.load_state_dict(torch.load('./inception3.pth'))
-    prediction = predict_inception(model, 'cuda', predict_data['image'])
+    predict_input = predict_data['image']
+    model.load_state_dict(torch.load('./dense169_2.pth'))
+    prediction = predict(model, 'cuda', predict_input)
     #prediction = prediction.cpu()
     #prediction = list(prediction.numpy())
     predict_data['label'] = prediction
