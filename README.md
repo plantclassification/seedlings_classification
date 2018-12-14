@@ -22,3 +22,5 @@ the website is http://www.plantseeding.com/
 
 ## Use phpMyAdmin to manage mySql database
 ![draw](https://user-images.githubusercontent.com/43126280/47887595-a5f8e880-de16-11e8-858f-e21e0fcea2a3.jpeg)
+
+## Model has been uploaded to model repository
